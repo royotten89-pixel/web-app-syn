@@ -105,4 +105,19 @@ export default function AdminDashboard() {
                 <Card key={req.id}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                     <div style={{ flex: 1, marginRight: 12 }}>
-                      <p style={{ fontSize: 11, color: 'var(--color-warning)', fontWeight: 700, marginBottom: 4 }}>{urgencyLabels[req.urgency]}</p>
+                      <p style={{ fontSize: 11, color: 'var(--color-warning)', fontWeight: 700, marginBottom: 4 }}>{urgencyLabels[req.urgency]}</p><p style={{ fontWeight: 600, fontSize: 14 }}>{req.description?.substring(0, 60)}{req.description?.length > 60 ? '...' : ''}</p>
+                      <p style={{ fontSize: 12, color: 'var(--color-text-muted)', marginTop: 2 }}>
+                        {req.profiles?.full_name} · {formatDate(req.created_at)}
+                      </p>
+                    </div>
+                    <Badge status={req.status} label={statusLabels[req.status]} />
+                  </div>
+                </Card>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
